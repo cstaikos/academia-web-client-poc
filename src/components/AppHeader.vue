@@ -1,17 +1,17 @@
 <template>
-  <div class="">
+  <div class="app-header">
     <h1>THIS IS THE HEADER</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'header'
+  name: 'app-header'
 }
 </script>
 
-<style lang="css">
-h1 {
-  text-align: center;
-}
+<style lang="scss">
+  .app-header {
+
+  }
 </style>
