@@ -6,24 +6,32 @@ Vue.use(Vuex)
 
 const state = {
   manuscripts: [],
-  isLoading: false
+  isLoading: true
 }
 
 const actions = {
-  fetchArticles() {
+  fetchManuscripts({ commit }) {
     ApiService.getManuscripts()
-    .then(({data}) => {
-      state.manuscripts = data
+    .then(({ data }) => {
+      commit('fetchEnd', data);
     })
   }
 }
 
-const getters = {
+const mutations = {
+  fetchStart (state) {
+    state.isLoading = true;
+  },
 
+  fetchEnd (state, manuscripts) {
+    console.log('fetchEnd')
+    state.manuscripts = manuscripts;
+    state.isLoading = false;
+  }
 }
 
 export default new Vuex.Store({
   state,
   actions,
-  getters
+  mutations
 })

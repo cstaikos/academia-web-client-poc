@@ -9,16 +9,17 @@
 </template>
 
 <script>
-import Store from "../store"
 import ManuscriptPreview from "./ManuscriptPreview.vue"
 
 export default {
   computed: {
-    manuscripts() { return this.$store.state.manuscripts }
+    manuscripts() {
+      return this.$store.state.manuscripts
+    }
   },
 
   created() {
-    this.$store.dispatch('fetchArticles')
+    this.$store.dispatch('fetchManuscripts')
   },
 
   components: {
