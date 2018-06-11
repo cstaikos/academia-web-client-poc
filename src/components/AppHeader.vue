@@ -1,6 +1,6 @@
 <template>
   <div class="app-header">
-    <h1>THIS IS THE HEADER</h1>
+    <h1>Academia Hub</h1>
   </div>
 </template>
 

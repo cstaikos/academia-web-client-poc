@@ -15,8 +15,15 @@ export default {
 
 <style lang="scss">
   .manuscript-preview {
+    height: 50px;
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid black;
+
     .manuscript-title {
-      
+      text-align: left;
+      font-size: 30px;
+      display: block;
     }
   }
 </style>

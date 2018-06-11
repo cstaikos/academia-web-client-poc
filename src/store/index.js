@@ -5,20 +5,25 @@ import ApiService from '../common/api.service'
 Vue.use(Vuex)
 
 const state = {
-  manuscripts: [{title: "test"}]
+  manuscripts: [],
+  isLoading: false
 }
 
 const actions = {
   fetchArticles() {
     ApiService.getManuscripts()
     .then(({data}) => {
-      console.log(data);
       state.manuscripts = data
     })
   }
 }
 
+const getters = {
+
+}
+
 export default new Vuex.Store({
   state,
-  actions
+  actions,
+  getters
 })

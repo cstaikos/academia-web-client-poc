@@ -1,6 +1,5 @@
 <template>
   <div class="app-main">
-    <h1>THIS IS THE MAIN SECTION</h1>
     <ManuscriptsList></ManuscriptsList>
   </div>
 </template>
@@ -17,9 +16,7 @@ export default {
 
 <style lang="scss">
   .app-main {
-    h2 {
-      text-align: center;
-      color: blue;
-    }
+    padding: 30px;
+    border: 1px solid black;
   }
 </style>

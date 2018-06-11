@@ -1,9 +1,9 @@
 <template>
   <div class="manuscripts-list">
+    <h2>All Manuscripts</h2>
     <ManuscriptPreview
     v-for="(manuscript, index) in manuscripts"
-    :manuscript="manuscript"
-    :key="index">
+    :manuscript="manuscript">
     </ManuscriptPreview>
   </div>
 </template>
@@ -29,6 +29,8 @@ export default {
 
 <style lang="scss">
   .manuscripts-list {
-
+    h2 {
+      text-align: center;
+    }
   }
 </style>
