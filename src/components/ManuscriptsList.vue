@@ -18,8 +18,7 @@ export default {
   },
 
   created() {
-    console.log("list created!");
-    console.log(this.$store.state.manuscripts);
+    this.$store.dispatch('fetchArticles')
   },
 
   components: {

@@ -4,7 +4,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
+import ApiService from './common/api.service'
 
+ApiService.init();
 
 new Vue({ // eslint-disable-line no-new
   el: '#app',
