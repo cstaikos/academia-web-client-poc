@@ -1,3 +1,7 @@
+/*
+Main vuex store for app (can modularize as needed as the app grows)
+*/
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ApiService from '../common/api.service'
@@ -11,6 +15,7 @@ const state = {
 
 const actions = {
   fetchManuscripts({ commit }) {
+    commit('fetchStart')
     ApiService.getManuscripts()
     .then(({ data }) => {
       commit('fetchEnd', data);
