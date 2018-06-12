@@ -1,13 +1,13 @@
 <template>
-  <div class="app-main">
+  <div class="app-home">
     <ManuscriptsList></ManuscriptsList>
   </div>
 </template>
 
 <script>
-import ManuscriptsList from './ManuscriptsList.vue'
+import ManuscriptsList from '../components/ManuscriptsList.vue'
 export default {
-  name: 'app-main',
+  name: 'app-home',
   components: {
     ManuscriptsList
   }
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .app-main {
+  .app-home {
     padding: 30px;
     border: 1px solid black;
   }
