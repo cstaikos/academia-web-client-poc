@@ -10,7 +10,7 @@ Vue.use(Vuex)
 
 const state = {
   manuscripts: [],
-  isLoading: true
+  isLoading: false
 }
 
 const actions = {

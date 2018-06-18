@@ -20,6 +20,14 @@ const ApiService = {
     .catch((error) => {
       console.error(error);
     })
+  },
+
+  createManuscript(manuscript) {
+    return Vue.axios
+    .post('manuscripts', manuscript)
+    .catch((error) => {
+      console.error(error)
+    })
   }
 }
 
