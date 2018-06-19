@@ -1,5 +1,5 @@
 <template>
-  <div class="app-footer container">
+  <div class="app-footer">
     <div class="row">
       <div class="col-xs-6 col-sm-4 col-md-3">
         Link 1

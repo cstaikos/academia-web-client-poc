@@ -1,9 +1,9 @@
 <template>
-  <div id="app container-fluid">
+  <div id="app">
     <AppHeader class="header"></AppHeader>
     <LoadingBar></LoadingBar>
-    <router-view></router-view>
-    <AppFooter></AppFooter>
+    <router-view class="container"></router-view>
+    <AppFooter class="footer"></AppFooter>
   </div>
 </template>
 
@@ -28,7 +28,11 @@ export default {
     background-color: #daf2f2;
   }
 
+  .footer {
+    background-color: #daf2f2;
+  }
+
   #app {
-    
+
   }
 </style>

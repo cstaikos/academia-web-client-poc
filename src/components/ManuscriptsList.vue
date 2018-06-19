@@ -1,7 +1,7 @@
 <template>
   <div class="manuscripts-list">
+    <router-link class="btn btn-primary float-right" :to="{ name: 'new-manuscript', params: {} }">+</router-link>
     <h2>All Manuscripts</h2>
-    <router-link class="btn btn-primary" :to="{ name: 'new-manuscript', params: {} }">Upload Manuscript</router-link>
     <ul>
       <ManuscriptPreview
       v-for="(manuscript, index) in manuscripts"
