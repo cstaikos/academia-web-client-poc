@@ -18,5 +18,7 @@ export default {
   .app-home {
     padding: 30px;
     border: 1px solid black;
+    background-color: #edf4f4;
+
   }
 </style>

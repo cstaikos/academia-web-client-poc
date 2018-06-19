@@ -5,7 +5,7 @@
         Title:
         <input v-model="title" type="text" name="title" value="">
       </label>
-      <button type="button" class="submit" v-on:click="submitManuscript">Submit</button>
+      <button type="button" class="btn btn-primary" v-on:click="submitManuscript">Submit</button>
     </form>
   </div>
 </template>

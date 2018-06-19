@@ -1,9 +1,9 @@
 <template lang="html">
-  <div class="manuscript-preview">
+  <li class="manuscript-preview">
     <router-link :to="{ name: 'manuscript-detail', params: {manuscriptId: manuscript.id} }">
       {{ manuscript.title }}
       </router-link>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -20,12 +20,9 @@ export default {
     height: 50px;
     padding: 15px;
     margin: 15px;
-    border: 1px solid black;
-
-    .manuscript-title {
-      text-align: left;
-      font-size: 30px;
-      display: block;
-    }
+    border: 2px solid #c9c7c7;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    list-style-type: none;
   }
 </style>

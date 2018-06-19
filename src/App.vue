@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <AppHeader></AppHeader>
+  <div id="app container-fluid">
+    <AppHeader class="header"></AppHeader>
     <LoadingBar></LoadingBar>
     <router-view></router-view>
     <AppFooter></AppFooter>
@@ -23,9 +23,12 @@ export default {
 </script>
 
 <style lang="scss">
+  .header {
+    height: 60px;
+    background-color: #daf2f2;
+  }
+
   #app {
-    h1 {
-      text-align: center;
-    }
+    
   }
 </style>
