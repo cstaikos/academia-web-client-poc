@@ -10,15 +10,26 @@ Vue.use(Vuex)
 
 const state = {
   manuscripts: [],
+  currentManuscript: {},
   isLoading: false
 }
 
 const actions = {
   fetchManuscripts({ commit }) {
-    commit('fetchStart')
+    commit('fetchStart');
     ApiService.getManuscripts()
     .then(({ data }) => {
-      commit('fetchEnd', data);
+      commit('saveManuscripts', data);
+      commit('fetchEnd');
+    })
+  },
+
+  fetchCurrentManuscript({ commit }, manuscriptId) {
+    commit('fetchStart');
+    ApiService.getCurrentManuscript(manuscriptId)
+    .then(({ data }) => {
+      commit('saveCurrentManuscript', data);
+      commit('fetchEnd');
     })
   }
 }
@@ -29,9 +40,15 @@ const mutations = {
   },
 
   fetchEnd (state, manuscripts) {
-    console.log('fetchEnd')
-    state.manuscripts = manuscripts;
     state.isLoading = false;
+  },
+
+  saveManuscripts (state, manuscripts) {
+    state.manuscripts = manuscripts;
+  },
+
+  saveCurrentManuscript (state, manuscript) {
+    state.currentManuscript = manuscript;
   }
 }
 

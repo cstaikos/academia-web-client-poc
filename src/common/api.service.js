@@ -22,11 +22,19 @@ const ApiService = {
     })
   },
 
+  getCurrentManuscript(manuscriptId) {
+    return Vue.axios
+    .get('manuscripts/' + manuscriptId)
+    .catch((error) => {
+      console.error(error);
+    })
+  },
+
   createManuscript(manuscript) {
     return Vue.axios
     .post('manuscripts', manuscript)
     .catch((error) => {
-      console.error(error)
+      console.error(error);
     })
   }
 }
