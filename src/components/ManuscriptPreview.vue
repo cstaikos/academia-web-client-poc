@@ -2,7 +2,7 @@
   <div class="manuscript-preview">
     <router-link :to="{ name: 'manuscript-detail', params: {manuscriptId: manuscript.id} }">
       {{ manuscript.title }}
-    </router-link>
+      </router-link>
   </div>
 </template>
 

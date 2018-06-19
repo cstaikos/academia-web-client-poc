@@ -1,6 +1,6 @@
 <template>
   <div class="app-header">
-    <h1>Academia Hub</h1>
+    <router-link :to="{ name: 'home', params: {} }" class="logo">Academia Hub</router-link>
   </div>
 </template>
 
@@ -12,6 +12,14 @@ export default {
 
 <style lang="scss">
   .app-header {
-
+    .logo {
+      text-align: left;
+      font-size: 36px;
+      font-weight: bold;
+      text-decoration: none;
+      &:active, &:visited {
+        color: black;
+      }
+    }
   }
 </style>
