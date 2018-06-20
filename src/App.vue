@@ -23,5 +23,19 @@ export default {
 </script>
 
 <style lang="scss">
-  
+  @import '../node_modules/bootstrap/scss/bootstrap.scss';
+  @import './assets/styles/global-settings.scss';
+
+  .header {
+    height: 60px;
+    background-color: $light-blue;
+  }
+
+  .footer {
+    background-color: $light-blue;
+  }
+
+  #app {
+
+  }
 </style>
