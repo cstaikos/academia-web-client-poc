@@ -49,6 +49,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'styles/global-settings.scss';
+  @import 'styles/global-settings.scss';
+
+  .manuscript-detail {
+    
+  }
 
 </style>

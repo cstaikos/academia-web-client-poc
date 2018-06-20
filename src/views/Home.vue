@@ -19,6 +19,5 @@ export default {
 
   .app-home {
     padding: 15px;
-    background-color: $color-primary-2;
   }
 </style>
