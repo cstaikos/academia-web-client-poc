@@ -1,1 +1,16 @@
-$light-blue: #daf2f2;
+// This file is imported into every component so that we can set global variabless here.
+// ONLY define variables here!
+// Don't add CSS rules here, as they will then be imported with every component and we'll
+// see tons of repetitive CSS included.
+
+$color-primary-0: #8ACCFF;	// Main Primary color */
+$color-primary-1: #ECF7FF;
+$color-primary-2: #B4DEFF;
+$color-primary-3: #65BCFE;
+$color-primary-4: #43A9F7;
+
+$color-complement-0: #FFC982;	// Main Complement color */
+$color-complement-1: #FFF6EB;
+$color-complement-2: #FFDCAE;
+$color-complement-3: #FFB95B;
+$color-complement-4: #FFAA38;

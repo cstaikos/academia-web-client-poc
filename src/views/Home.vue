@@ -15,9 +15,10 @@ export default {
 </script>
 
 <style lang="scss">
+  @import 'styles/global-settings.scss';
+
   .app-home {
-    padding: 30px;
-    border: 1px solid black;
-    background-color: #edf4f4;
+    padding: 15px;
+    background-color: $color-primary-2;
   }
 </style>

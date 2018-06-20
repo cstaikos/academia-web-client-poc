@@ -1,7 +1,7 @@
 <template>
-  <div class="app-header">
+  <header class="header">
     <router-link :to="{ name: 'home', params: {} }" class="logo">AcademiaHub</router-link>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -11,13 +11,19 @@ export default {
 </script>
 
 <style lang="scss">
-  .app-header {
+  @import 'styles/global-settings.scss';
+
+  .header {
+    background-color: $color-complement-3;
+
     .logo {
       text-align: left;
       font-size: 36px;
       font-weight: bold;
       text-decoration: none;
       margin: 25px;
+      height: 60px;
+
       &:active, &:visited {
         color: black;
       }

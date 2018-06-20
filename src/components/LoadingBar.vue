@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style lang="scss">
+  @import 'styles/global-settings.scss';
+
   .loading-bar {
     background-color: azure;
     height: 30px;

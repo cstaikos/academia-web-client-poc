@@ -33,5 +33,6 @@ export default {
 </script>
 
 <style lang="scss">
-  
+  @import 'styles/global-settings.scss';
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-footer">
+  <footer class="footer">
     <div class="row">
       <div class="col-xs-6 col-sm-4 col-md-3">
         Link 1
@@ -14,7 +14,7 @@
         Link 4
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>
@@ -24,5 +24,9 @@ export default {
 </script>
 
 <style lang="scss">
+  @import 'styles/global-settings.scss';
 
+  .footer {
+    background-color: $color-complement-3;
+  }
 </style>

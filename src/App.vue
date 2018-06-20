@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <AppHeader class="header"></AppHeader>
+    <AppHeader></AppHeader>
     <LoadingBar></LoadingBar>
-    <router-view class="container"></router-view>
-    <AppFooter class="footer"></AppFooter>
+    <router-view class="container content "></router-view>
+    <AppFooter></AppFooter>
   </div>
 </template>
 
@@ -24,18 +24,11 @@ export default {
 
 <style lang="scss">
   @import '../node_modules/bootstrap/scss/bootstrap.scss';
-  @import './assets/styles/global-settings.scss';
-
-  .header {
-    height: 60px;
-    background-color: $light-blue;
-  }
-
-  .footer {
-    background-color: $light-blue;
-  }
+  @import 'styles/global-settings.scss';
+  @import 'styles/global-styles.scss';
 
   #app {
-
+    background-color: $color-primary-1;
   }
+
 </style>
