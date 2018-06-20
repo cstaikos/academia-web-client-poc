@@ -22,9 +22,9 @@ export default {
     height: 50px;
     padding: 15px;
     margin: 15px;
-    border: 2px solid #c9c7c7;
+    border: 1px solid $color-primary-2;
     border-radius: 5px;
-    background-color: #e8e8e8;
+    background-color: $color-primary-0;
     list-style-type: none;
   }
 </style>
