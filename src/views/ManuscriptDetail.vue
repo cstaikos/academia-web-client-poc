@@ -48,8 +48,6 @@ export default {
 }
 </script>
 
-<style lang="css">
-  .manuscript-detail {
-
-  }
+<style lang="scss">
+  
 </style>

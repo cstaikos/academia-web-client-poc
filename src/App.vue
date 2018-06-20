@@ -23,16 +23,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .header {
-    height: 60px;
-    background-color: #daf2f2;
-  }
-
-  .footer {
-    background-color: #daf2f2;
-  }
-
-  #app {
-
-  }
+  
 </style>

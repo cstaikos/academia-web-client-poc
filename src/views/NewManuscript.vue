@@ -32,8 +32,6 @@ export default {
 }
 </script>
 
-<style lang="css">
-  .new-manuscript {
-
-  }
+<style lang="scss">
+  
 </style>

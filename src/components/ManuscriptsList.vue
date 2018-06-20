@@ -5,7 +5,8 @@
     <ul>
       <ManuscriptPreview
       v-for="(manuscript, index) in manuscripts"
-      :manuscript="manuscript">
+      :manuscript="manuscript"
+      :key="manuscript.id">
       </ManuscriptPreview>
     </ul>
   </div>
@@ -32,9 +33,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .manuscripts-list {
-    h2 {
-      text-align: center;
-    }
-  }
+
 </style>
