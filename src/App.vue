@@ -2,7 +2,7 @@
   <div id="app">
     <AppHeader></AppHeader>
     <LoadingBar></LoadingBar>
-    <router-view class="container content "></router-view>
+    <router-view class="container content"></router-view>
     <AppFooter></AppFooter>
   </div>
 </template>
