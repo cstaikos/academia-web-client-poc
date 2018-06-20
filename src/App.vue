@@ -28,7 +28,7 @@ export default {
   @import 'styles/global-styles.scss';
 
   #app {
-    background-color: $color-primary-1;
+    background-color: $color-primary-2;
   }
 
 </style>
