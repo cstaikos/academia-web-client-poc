@@ -4,6 +4,7 @@
       <div class="col-12">
         <h1>{{ manuscript.title }}</h1>
         <h2>Filed under: {{ manuscript.discipline.name }}</h2>
+        <h3>Filename: {{ manuscript.pdf_url }}</h3>
       </div>
 
       <div class="works-cited col-6">
@@ -20,7 +21,7 @@
       </div>
 
       <div class="cited-by col-6">
-        <h6>Citations ({{ manuscript.cited_by.length }})</h6>
+        <h6>Cited By ({{ manuscript.cited_by.length }})</h6>
         <div v-for="citedBy in manuscript.cited_by" class="cited-by">
           <ul>
             <router-link :to="{ name: 'manuscript-detail', params: {manuscriptId: citedBy.id} }">
@@ -32,8 +33,21 @@
         </div>
       </div>
 
-      <div class="col-6 form-group" v-if="showCitationArea">
-        <input
+      <div class="col-12 controls">
+        <div class="btn btn-primary" v-on:click="toggleCitationArea()">
+          <span v-if="!showCitationArea">Add Citations</span>
+          <span v-if="showCitationArea">Done Adding Citations</span>
+        </div>
+        <div class="btn btn-primary" v-on:click="toggleUploadArea()">
+          <span v-if="!showUploadArea">Upload PDF</span>
+          <span v-if="showUploadArea">Done with PDF</span>
+        </div>
+        <router-link :to="{ name: 'manuscript-edit', params: {manuscriptId: manuscript.id} }" class="btn btn-primary">Edit</router-link>
+      </div>
+
+      <div class="col-6" v-if="showCitationArea">
+        <div class="form-group">
+          <input
           class="form-control"
           type="text"
           name="citation-title"
@@ -43,43 +57,47 @@
           @keyup="query = $event.target.value"
           v-on:keyup="fetchSuggestedCitations"
           ref="citationInput">
+        </div>
       </div>
 
       <div class="col-6" v-if="showCitationArea">
-        <ul>
-          <li v-for="manuscript in suggestedCitations">
-            <div class="row" style="margin-bottom: 10px; padding: 10px;border: 1px solid grey">
-              <div class="col-6">
-                <div class="btn btn-primary" :id="manuscript.id" v-on:click="addCitation($event)">
-                  + Add
+        <div class="suggested-citations-container">
+          <span class="d-block" v-if="!suggestedCitations || suggestedCitations.length < 1">No suggestions for "{{ query }}"...</span>
+          <ul>
+            <li v-for="manuscript in suggestedCitations">
+              <div class="row citation-suggestion">
+                <div class="col-6">
+                  <div class="btn btn-primary" :id="manuscript.id" v-on:click="addCitation($event)">
+                    + Add
+                  </div>
                 </div>
-              </div>
-              <div class="col-6">
-                {{ manuscript.title }} ({{ manuscript.discipline.name }})
-              </div>
+                <div class="col-6">
+                  {{ manuscript.title }} ({{ manuscript.discipline.name }})
+                </div>
 
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-12">
-        <div class="btn btn-primary" v-on:click="toggleCitationArea()">
-          Add Citation
+              </div>
+            </li>
+          </ul>
         </div>
-
-        <router-link :to="{ name: 'manuscript-edit', params: {manuscriptId: manuscript.id} }" class="btn btn-primary">Edit</router-link>
       </div>
 
+      <div class="col-6" v-if="showUploadArea">
+        <form id="upload-form" v-on:submit="uploadFile">
+          <div class="form-group">
+            <input type="file" ref="file_upload" value="Choose File" accept="application/pdf">
+            <input type="submit" class="btn btn-primary" value="Upload">
+          </div>
+
+        </form>
+
+      </div>
 
     </div>
-
   </div>
 </template>
 
 <script>
 import ApiService from '../common/api.service'
-
 import ManuscriptPreview from '../components/ManuscriptPreview.vue'
 
 export default {
@@ -91,6 +109,7 @@ export default {
 
   props: {
     showCitationArea: false,
+    showUploadArea: false,
     suggestedCitations: []
   },
 
@@ -108,7 +127,6 @@ export default {
 
   methods: {
     fetchManuscript() {
-      console.count("fetching manuscript");
       this.$store.dispatch('fetchCurrentManuscript', this.$route.params.manuscriptId);
     },
 
@@ -118,12 +136,22 @@ export default {
       }
       else {
         this.showCitationArea = true;
+        this.showUploadArea = false;
         this.$nextTick(() => this.$refs.citationInput.focus());
       }
     },
 
+    toggleUploadArea() {
+      if (this.showUploadArea) {
+        this.showUploadArea = false;
+      }
+      else {
+        this.showUploadArea = true;
+        this.showCitationArea = false;
+      }
+    },
+
     fetchSuggestedCitations() {
-      console.log(this.query);
       if (this.query.length > 3) {
         ApiService.searchSuggestedCitations(this.$route.params.manuscriptId, this.query)
         .then(({ data }) => {
@@ -141,6 +169,23 @@ export default {
       .then(() => {
         this.fetchManuscript();
         this.fetchSuggestedCitations();
+      })
+    },
+
+    uploadFile(event) {
+      event.preventDefault();
+      const fileUpload = this.$refs.file_upload;
+      const formData = new FormData();
+
+      formData.append(
+        "file",
+        fileUpload.files[0],
+        fileUpload.files[0].name
+      );
+
+      ApiService.uploadFile(this.$route.params.manuscriptId, formData)
+      .then(() => {
+        this.fetchManuscript();
       })
     }
   },
@@ -160,9 +205,21 @@ export default {
 <style lang="scss">
   @import 'styles/global-settings.scss';
 
-  .citation-list-item {
-    list-style-type: none;
+  .suggested-citations-container {
+    border: 1px solid $color-primary-4;
+    border-radius: 10px;
+    min-height: 100px;
   }
 
+  .citation-suggestion {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid $color-primary-3;
+    border-radius: 5px;
+  }
+
+  .controls {
+    margin-bottom: 15px;
+  }
 
 </style>

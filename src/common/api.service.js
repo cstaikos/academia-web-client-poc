@@ -68,6 +68,21 @@ const ApiService = {
     .catch((error) => {
       console.error(error);
     })
+  },
+
+  uploadFile(manuscriptId, formData) {
+    return Vue.axios
+    .post('manuscripts/' + manuscriptId + '/file',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    )
+    .catch((error) => {
+      console.error(error);
+    })
   }
 }
 
