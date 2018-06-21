@@ -30,6 +30,14 @@ const ApiService = {
     })
   },
 
+  searchSuggestedCitations(manuscriptId, query) {
+    return Vue.axios
+    .get('manuscripts/search?manuscriptId=' + manuscriptId + '&query=' + query)
+    .catch((error) => {
+      console.error(error);
+    })
+  },
+
   createManuscript(manuscript) {
     return Vue.axios
     .post('manuscripts', manuscript)
