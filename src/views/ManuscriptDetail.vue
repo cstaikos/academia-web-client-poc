@@ -4,7 +4,6 @@
       <div class="col-12">
         <h1>{{ manuscript.title }}</h1>
         <h2>Filed under: {{ manuscript.discipline.name }}</h2>
-        <h3>Filename: {{ manuscript.pdf_url }}</h3>
       </div>
 
       <div class="works-cited col-6">
@@ -92,6 +91,13 @@
 
       </div>
 
+      <div class="col-12">
+        <!-- TODO remove inline style -->
+        <object :data="contentUrl" type="application/pdf" width="100%" height="1000px">
+          <embed :src="contentUrl" type="application/pdf" />
+        </object>
+      </div>
+
     </div>
   </div>
 </template>
@@ -99,6 +105,7 @@
 <script>
 import ApiService from '../common/api.service'
 import ManuscriptPreview from '../components/ManuscriptPreview.vue'
+import { API_URL } from '../../config'
 
 export default {
   name: 'manuscript-detail',
@@ -122,6 +129,14 @@ export default {
   computed: {
     manuscript() {
       return this.$store.state.currentManuscript;
+    },
+
+    contentUrl() {
+      // For some reason importing the API base url wasn't working...
+      // Did it the same was as is done in api.service.js (see import above)
+      // But it was coming in as undefined....?
+      // TODO fix this
+      return 'http://localhost:3000/' + this.manuscript.content;
     }
   },
 
@@ -178,7 +193,7 @@ export default {
       const formData = new FormData();
 
       formData.append(
-        "file",
+        "CONTENTDATA",
         fileUpload.files[0],
         fileUpload.files[0].name
       );
