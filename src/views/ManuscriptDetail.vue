@@ -50,7 +50,7 @@
           <li v-for="manuscript in suggestedCitations">
             <div class="row" style="margin-bottom: 10px; padding: 10px;border: 1px solid grey">
               <div class="col-6">
-                <div class="btn btn-primary">
+                <div class="btn btn-primary" :id="manuscript.id" v-on:click="addCitation($event)">
                   + Add
                 </div>
               </div>
@@ -108,6 +108,7 @@ export default {
 
   methods: {
     fetchManuscript() {
+      console.count("fetching manuscript");
       this.$store.dispatch('fetchCurrentManuscript', this.$route.params.manuscriptId);
     },
 
@@ -132,6 +133,15 @@ export default {
       else {
         this.suggestedCitations = [];
       }
+    },
+
+    addCitation(event) {
+      let citeeId = event.target.id;
+      ApiService.addCitation(this.$route.params.manuscriptId, citeeId)
+      .then(() => {
+        this.fetchManuscript();
+        this.fetchSuggestedCitations();
+      })
     }
   },
 

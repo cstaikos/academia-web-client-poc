@@ -32,7 +32,7 @@ const ApiService = {
 
   searchSuggestedCitations(manuscriptId, query) {
     return Vue.axios
-    .get('manuscripts/search?manuscriptId=' + manuscriptId + '&query=' + query)
+    .get('manuscripts/search?manuscript_id=' + manuscriptId + '&query=' + query)
     .catch((error) => {
       console.error(error);
     })
@@ -41,6 +41,14 @@ const ApiService = {
   createManuscript(manuscript) {
     return Vue.axios
     .post('manuscripts', manuscript)
+    .catch((error) => {
+      console.error(error);
+    })
+  },
+
+  addCitation(citerId, citeeId) {
+    return Vue.axios
+    .post('manuscripts/' + citerId + '/citations', {citee_id: citeeId})
     .catch((error) => {
       console.error(error);
     })
