@@ -17,6 +17,11 @@ export default new Router({
         component: Home
       },
       {
+        path: '/manuscripts/new',
+        name: 'new-manuscript',
+        component: NewManuscript
+      },
+      {
         path: '/manuscripts/:manuscriptId',
         name: 'manuscript-detail',
         component: ManuscriptDetail
@@ -26,10 +31,5 @@ export default new Router({
         name: 'manuscript-edit',
         component: ManuscriptEdit
       },
-      {
-        path: '/manuscripts/new',
-        name: 'new-manuscript',
-        component: NewManuscript
-      }
   ]
 })

@@ -30,6 +30,22 @@ const ApiService = {
     })
   },
 
+  getPrimaryDisciplines() {
+    return Vue.axios
+    .get('disciplines/top')
+    .catch((error) => {
+      console.error(error);
+    })
+  },
+
+  getSecondaryDisciplines(disciplineId) {
+    return Vue.axios
+    .get('disciplines/' + disciplineId + '/children')
+    .catch((error) => {
+      console.error(error);
+    })
+  },
+
   searchSuggestedCitations(manuscriptId, query) {
     return Vue.axios
     .get('manuscripts/search?manuscript_id=' + manuscriptId + '&query=' + query)
