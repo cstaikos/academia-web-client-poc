@@ -114,15 +114,12 @@ export default {
     ManuscriptPreview
   },
 
-  props: {
-    showCitationArea: false,
-    showUploadArea: false,
-    suggestedCitations: []
-  },
-
   data() {
     return {
-      query: ""
+      showCitationArea: false,
+      showUploadArea: false,
+      query: "",
+      suggestedCitations: []
     }
   },
 
