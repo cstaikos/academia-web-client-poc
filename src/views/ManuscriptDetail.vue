@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div v-if="manuscript">
     <div class="row">
       <div class="col-12">
         <h1>{{ manuscript.title }}</h1>
@@ -92,10 +92,10 @@
       </div>
 
       <div class="col-12">
-        <!-- TODO remove inline style -->
-        <object :data="contentUrl" type="application/pdf" width="100%" height="1000px">
+        <object v-if="manuscript.content" class="manuscript-content" :data="contentUrl" type="application/pdf">
           <embed :src="contentUrl" type="application/pdf" />
         </object>
+        <span v-else>This is a stub article, as no PDF has been uploaded. Click above to add one!</span>
       </div>
 
     </div>
@@ -167,7 +167,7 @@ export default {
     },
 
     fetchSuggestedCitations() {
-      if (this.query.length > 3) {
+      if (this.query.length > 1) {
         ApiService.searchSuggestedCitations(this.$route.params.manuscriptId, this.query)
         .then(({ data }) => {
           this.suggestedCitations = data;
@@ -235,6 +235,11 @@ export default {
 
   .controls {
     margin-bottom: 15px;
+  }
+
+  .manuscript-content {
+    width: 100%;
+    height: 1000px;
   }
 
 </style>

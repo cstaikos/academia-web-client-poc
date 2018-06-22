@@ -10,7 +10,7 @@ Vue.use(Vuex)
 
 const state = {
   manuscripts: [],
-  currentManuscript: {},
+  currentManuscript: undefined,
   isLoading: false
 }
 
