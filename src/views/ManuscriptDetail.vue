@@ -4,6 +4,9 @@
       <div class="col-12">
         <h1>{{ manuscript.title }}</h1>
         <h2>Filed under: {{ manuscript.discipline.name }}</h2>
+        <h4>Published {{ manuscript.publication_date }}</h4>
+        <h4>Abstract:</h4>
+        <p>{{ manuscript.abstract }}</p>
       </div>
 
       <div class="works-cited col-6">

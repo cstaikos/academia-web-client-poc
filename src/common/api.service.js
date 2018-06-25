@@ -14,6 +14,23 @@ const ApiService = {
       Vue.axios.defaults.baseURL = API_URL
   },
 
+  login(credentials) {
+    console.log(credentials);
+    return Vue.axios
+    .post('auth', credentials)
+    .catch((error) => {
+      console.error(error);
+    })
+  },
+
+  getCurrentUser() {
+    return Vue.axios
+    .get('current_user')
+    .catch((error) => {
+      console.error(error);
+    })
+  },
+
   getManuscripts() {
     return Vue.axios
     .get('manuscripts')

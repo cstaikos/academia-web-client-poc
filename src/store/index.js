@@ -10,7 +10,9 @@ Vue.use(Vuex)
 
 const state = {
   manuscripts: [],
-  currentManuscript: undefined,
+  currentManuscript: null,
+  currentUser: null,
+  token: localStorage.getItem('user-token', "") || null,
   isLoading: false
 }
 
@@ -31,6 +33,31 @@ const actions = {
       commit('saveCurrentManuscript', data);
       commit('fetchEnd');
     })
+  },
+
+  login({ commit, dispatch }, credentials) {
+    let that = this;
+    commit('fetchStart');
+    ApiService.login(credentials)
+    .then(({ data }) => {
+      Vue.axios.defaults.headers.Authorization = data.token;
+      localStorage.setItem('user-token', data.token)
+      commit('saveAuthToken', data);
+      dispatch('fetchCurrentUser');
+    })
+  },
+
+  fetchCurrentUser({ commit }) {
+    ApiService.getCurrentUser()
+    .then(({ data }) => {
+      commit('saveCurrentUser', data);
+      commit('fetchEnd');
+    })
+  },
+
+  logout({ commit }) {
+    commit('saveAuthToken', null);
+    commit('saveCurrentUser', null);
   }
 }
 
@@ -49,6 +76,14 @@ const mutations = {
 
   saveCurrentManuscript (state, manuscript) {
     state.currentManuscript = manuscript;
+  },
+
+  saveCurrentUser (state, user) {
+    state.currentUser = user;
+  },
+
+  saveAuthToken (state, token) {
+    state.authToken = token;
   }
 }
 

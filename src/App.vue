@@ -8,16 +8,25 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 import LoadingBar from './components/LoadingBar.vue'
 
 export default {
   name: 'app',
+
   components: {
     AppHeader,
     AppFooter,
     LoadingBar
+  },
+
+  created() {
+    if (this.$store.state.token) {
+      Vue.axios.defaults.headers.Authorization = this.$store.state.token;
+      this.$store.dispatch('fetchCurrentUser');
+    }
   }
 }
 </script>
