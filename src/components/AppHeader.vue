@@ -1,9 +1,12 @@
 <template>
   <header class="header">
     <router-link :to="{ name: 'home', params: {} }" class="logo">AcademiaHub</router-link>
-    <router-link v-if="!currentUser" :to="{ name: 'login', params: {} }" class="btn btn-primary float-right">Login</router-link>
+    <div v-if="!currentUser" class="float-right">
+      <router-link :to="{ name: 'login', params: {} }" class="btn btn-primary">Login</router-link>
+      <router-link :to="{ name: 'new-user', params: {} }" class="btn btn-primary">Sign up</router-link>
+    </div>
     <div v-else class="float-right">
-      Welcome, {{ currentUser.email }}
+      Welcome, {{ currentUser.first_name }} {{ currentUser.last_name }}
       <div class="btn btn-primary" v-on:click="logout">
         Log out
       </div>
@@ -39,7 +42,6 @@ export default {
 
   .header {
     background-color: $color-complement-3;
-    // height: 60px;
     padding: 15px;
 
     .logo {

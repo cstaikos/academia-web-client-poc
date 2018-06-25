@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import NewUser from '../views/NewUser.vue'
 import NewManuscript from '../views/NewManuscript.vue'
 import ManuscriptDetail from '../views/ManuscriptDetail.vue'
 import ManuscriptEdit from '../views/ManuscriptEdit.vue'
@@ -21,6 +22,11 @@ export default new Router({
         path: '/login',
         name: 'login',
         component: Login
+      },
+      {
+        path: '/users/new',
+        name: 'new-user',
+        component: NewUser
       },
       {
         path: '/manuscripts/new',

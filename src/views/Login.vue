@@ -2,6 +2,7 @@
   <div>
     <div class="row">
       <div class="col-12">
+        <h1>Log In</h1>
         <form v-on:submit="login">
           <div class="form-group">
             <label for="email">Email:</label>

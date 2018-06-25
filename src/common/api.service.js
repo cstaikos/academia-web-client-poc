@@ -100,6 +100,14 @@ const ApiService = {
     .catch((error) => {
       console.error(error);
     })
+  },
+
+  createUser(user) {
+    return Vue.axios
+    .post('users/', user)
+    .catch((error) => {
+      console.error(error);
+    })
   }
 }
 
